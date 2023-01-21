@@ -19,12 +19,11 @@ const main = async () => {
     );
     console.log("Contract balance:", hre.ethers.utils.formatEther(contractBalance));
 
-    /*let waveCount;
-    waveCount = await waveContract.getTotalWaves();
-    console.log(waveCount.toNumber());*/
+    const waveTxn1 = await waveContract.wave("This is wave #1");
+    await waveTxn1.wait();
 
-    let waveTxn = await waveContract.wave("A message!");
-    await waveTxn.wait();
+    const waveTxn2 = await waveContract.wave("This is wave #2");
+    await waveTxn2.wait();
 
     /**
      * Waveした後のコントラクトの残高を取得し、結果を出力
